@@ -1,6 +1,19 @@
-// ── NAV SCROLL
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// ── LENIS SMOOTH SCROLL
 const nav = document.getElementById('nav');
-if (nav) {
+if (!reducedMotion && typeof Lenis !== 'undefined') {
+  const lenis = new Lenis({ duration: 1.2, smoothWheel: true });
+  function lenisRaf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(lenisRaf);
+  }
+  requestAnimationFrame(lenisRaf);
+
+  if (nav) {
+    lenis.on('scroll', ({ scroll }) => nav.classList.toggle('scrolled', scroll > 40));
+  }
+} else if (nav) {
   window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
 }
 
@@ -31,3 +44,33 @@ const path = window.location.pathname.split('/').pop() || 'index.html';
 document.querySelectorAll('.nav-links a').forEach(a => {
   if (a.getAttribute('href') === path) a.classList.add('active');
 });
+
+// ── CARD MOUSE GLOW
+if (!reducedMotion) {
+  document.querySelectorAll('.feat, .plan, .svc, .uc').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect();
+      card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+      card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+    });
+  });
+}
+
+// ── MAGNETIC BUTTONS
+if (!reducedMotion) {
+  const MAX_PULL = 15;
+  document.querySelectorAll('.btn-primary, .btn-secondary').forEach(btn => {
+    btn.addEventListener('mousemove', e => {
+      const rect = btn.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      const dist = Math.hypot(x, y);
+      const pull = Math.min(dist / 4, MAX_PULL);
+      const angle = Math.atan2(y, x);
+      btn.style.transform = `translate(${Math.cos(angle) * pull}px, ${Math.sin(angle) * pull}px)`;
+    });
+    btn.addEventListener('mouseleave', () => {
+      btn.style.transform = 'translate(0px, 0px)';
+    });
+  });
+}

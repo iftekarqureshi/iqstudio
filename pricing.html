@@ -35,9 +35,10 @@
   background: var(--bg3); border-color: rgba(99,102,241,0.35);
   box-shadow: 0 0 0 1px rgba(99,102,241,0.2);
 }
-.plan.featured::before {
+.plan.featured::after {
   content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
   background: linear-gradient(90deg, var(--indigo), var(--cyan));
+  z-index: 2; pointer-events: none;
 }
 .plan-tag { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-3); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
 .plan-name { font-size: 1.5rem; font-weight: 700; color: var(--white); margin-bottom: 6px; }
@@ -238,6 +239,7 @@
   <div class="footer-top"><div><div class="footer-brand-name"><div class="nav-logo-mark" style="width:26px;height:26px;border-radius:6px;"><svg width="16" height="16" viewBox="0 0 18 18" fill="none"><rect x="3" y="3" width="2.5" height="12" rx="1.25" fill="white"/><circle cx="4.25" cy="9" r="1.8" fill="var(--indigo)"/><circle cx="12" cy="9" r="5.5" stroke="white" stroke-width="2"/><line x1="15.5" y1="13" x2="17.5" y2="15.5" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></div>IQ Studio</div><p class="footer-tagline">Enterprise Cloud Engineering<br>Muscat, Oman · Available Globally</p></div><div class="footer-nav"><div class="fn-group"><div class="fn-label">Company</div><a href="about.html">About</a><a href="about.html#team">Leadership</a></div><div class="fn-group"><div class="fn-label">Solutions</div><a href="solutions.html#engineering">Engineering</a><a href="solutions.html#cloud">Cloud</a><a href="solutions.html#devops">DevOps</a></div><div class="fn-group"><div class="fn-label">Product</div><a href="products.html">Products</a><a href="pricing.html">Pricing</a></div><div class="fn-group"><div class="fn-label">Connect</div><a href="contact.html">Contact</a><a href="https://linkedin.com" target="_blank">LinkedIn</a><a href="https://github.com" target="_blank">GitHub</a></div></div></div>
   <div class="footer-bottom"><span>© 2026 IQ Studio · All rights reserved</span><div class="footer-social"><a href="https://linkedin.com" target="_blank">LinkedIn</a><a href="https://github.com" target="_blank">GitHub</a></div></div>
 </footer>
+<script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
 <script src="shared.js"></script>
 <script>
 var isRet = false;
