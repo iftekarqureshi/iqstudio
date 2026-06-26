@@ -67,9 +67,11 @@ if (!reducedMotion) {
       const dist = Math.hypot(x, y);
       const pull = Math.min(dist / 4, MAX_PULL);
       const angle = Math.atan2(y, x);
+      btn.style.transition = 'background 0.18s, border-color 0.18s, color 0.18s, box-shadow 0.18s, transform 0s';
       btn.style.transform = `translate(${Math.cos(angle) * pull}px, ${Math.sin(angle) * pull}px)`;
     });
     btn.addEventListener('mouseleave', () => {
+      btn.style.transition = '';
       btn.style.transform = 'translate(0px, 0px)';
     });
   });
