@@ -117,20 +117,13 @@
   <div class="pricing-inner">
     <div class="label reveal">Engagement Plans</div>
     <h2 class="sh reveal">Choose your model.</h2>
-    <div class="toggle-row reveal">
-      <span class="tgl-lbl on" id="lbl-proj">Project-Based</span>
-      <div class="tgl" id="tgl" onclick="togglePricing()"></div>
-      <span class="tgl-lbl" id="lbl-ret">Monthly Retainer</span>
-      <span class="save-pill">Save 20%</span>
-    </div>
-    <div class="plans-grid">
+    <div class="plans-grid" style="margin-top: 40px;">
       <div class="plan reveal">
         <div class="plan-tag"><span class="badge badge-indigo" style="font-size:0.52rem">Starter</span></div>
         <div class="plan-name">Foundation</div>
         <div class="plan-sub">For startups and MVPs that need to launch fast without cutting corners.</div>
-        <div class="plan-price"><span class="cur">$</span><span id="p1">8,000</span></div>
-        <div class="plan-period" id="per1">/ project</div>
-        <div class="plan-note" id="note1">Starting from · scoped per engagement</div>
+        <div class="plan-price" style="font-size:2.4rem; margin-bottom:12px;">Enquire</div>
+        <div class="plan-note">Custom scoped per engagement</div>
         <div class="plan-div"></div>
         <ul class="plan-feats">
           <li class="pf"><span class="ck">✓</span>Full-stack application (up to 10 screens)</li>
@@ -151,9 +144,8 @@
         <div class="plan-tag"><span class="badge badge-indigo" style="font-size:0.52rem">Most Popular</span></div>
         <div class="plan-name">Enterprise</div>
         <div class="plan-sub">For companies that need production-grade infrastructure, not just a working prototype.</div>
-        <div class="plan-price"><span class="cur">$</span><span id="p2">25,000</span></div>
-        <div class="plan-period" id="per2">/ project</div>
-        <div class="plan-note" id="note2">Starting from · scoped per engagement</div>
+        <div class="plan-price" style="font-size:2.4rem; margin-bottom:12px;">Enquire</div>
+        <div class="plan-note">Custom scoped per engagement</div>
         <div class="plan-div"></div>
         <ul class="plan-feats">
           <li class="pf"><span class="ck">✓</span>Full-stack application (unlimited scope)</li>
@@ -174,9 +166,8 @@
         <div class="plan-tag"><span class="badge badge-cyan" style="font-size:0.52rem">Custom Scale</span></div>
         <div class="plan-name">Enterprise Custom</div>
         <div class="plan-sub">For enterprises requiring complete digital transformation, including legacy migration.</div>
-        <div class="plan-price"><span class="cur">$</span><span id="p3">50,000+</span></div>
-        <div class="plan-period" id="per3">/ minimum scope</div>
-        <div class="plan-note" id="note3">Baseline estimate · custom scope required</div>
+        <div class="plan-price" style="font-size:2.4rem; margin-bottom:12px;">Enquire</div>
+        <div class="plan-note">Custom scoped per engagement</div>
         <div class="plan-div"></div>
         <ul class="plan-feats">
           <li class="pf"><span class="ck">✓</span>Everything in Enterprise</li>
@@ -243,17 +234,6 @@
 <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
 <script src="shared.js"></script>
 <script>
-var isRet = false;
-var prices = { p:['8,000','25,000','50,000+'], r:['6,400','20,000','40,000+'] };
-var periods = { p:['/&nbsp;project','/&nbsp;project','/&nbsp;minimum scope'], r:['/&nbsp;month','/&nbsp;month','/&nbsp;month'] };
-function togglePricing(){
-  isRet = !isRet;
-  document.getElementById('tgl').classList.toggle('active', isRet);
-  document.getElementById('lbl-proj').classList.toggle('on', !isRet);
-  document.getElementById('lbl-ret').classList.toggle('on', isRet);
-  var m = isRet ? 'r' : 'p';
-  [1,2,3].forEach(i=>{ document.getElementById('p'+i).textContent=prices[m][i-1]; document.getElementById('per'+i).innerHTML=periods[m][i-1]; });
-}
 function toggleFaq(el){
   var ans=el.nextElementSibling, ico=el.querySelector('.faq-ico'), was=ans.classList.contains('open');
   document.querySelectorAll('.faq-a').forEach(a=>a.classList.remove('open'));
